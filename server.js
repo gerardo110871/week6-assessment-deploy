@@ -50,6 +50,7 @@ app.get('/api/robots/five', (req, res) => {
 
 app.post('/api/duel', (req, res) => {
     try {
+        rollbar.log('User clicked Duel')
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
 
