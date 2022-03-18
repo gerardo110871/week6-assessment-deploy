@@ -20,7 +20,7 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 // app.use("/", express.static(path.join(__dirname, "../public")))
-app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
+// app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
 // app.use("/js", express.static(path.join(__dirname, '../public/index.html')))
 
 app.get("/", function(req, res){
@@ -32,6 +32,13 @@ app.get("/js", (req, res)=>{
     rollbar.info("Served JS");
     res.sendFile(path.join(__dirname, "../public/index.js"))
 })
+app.get("/styles", (req, res)=>{
+    rollbar.info("Served JS");
+    res.sendFile(path.join(__dirname, "../public/index.css"))
+})
+
+
+
 
 app.get('/api/robots', (req, res) => {
     try {
