@@ -1,48 +1,19 @@
 const express = require('express')
 const path = require('path')
-const cors = require('cors')
+const Rollbar = require('rollbar')
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
 
 app.use(express.json())
-app.use(cors())
 
-// include and initialize the rollbar library with your access token
-var Rollbar = require('rollbar')
-var rollbar = new Rollbar({
-  accessToken: 'b106d49cf99b4091adcb7aac1fd3e606',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})
-
-// record a generic message and send it to Rollbar
-rollbar.log('Hello world!')
-
-// app.use("/", express.static(path.join(__dirname, "../public")))
-// app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
-// app.use("/js", express.static(path.join(__dirname, '../public/index.html')))
-
-app.get("/", function(req, res){
-    rollbar.info("served HTML");
-    res.sendFile(path.join(__dirname, "../public/index.html"))
-})
-
-app.get("/js", (req, res)=>{
-    rollbar.info("Served JS");
-    res.sendFile(path.join(__dirname, "../public/index.js"))
-})
-app.get("/styles", (req, res)=>{
-    rollbar.info("Served Styles");
-    res.sendFile(path.join(__dirname, "../public/index.css"))
-})
-
-
-
+app.use(express.static(path.join(__dirname, './public')))
+app.use("/styles", express.static(path.join(__dirname, '/public/index.css')))
+app.use("/js", express.static(path.join(__dirname, '/public/index.js')))
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
