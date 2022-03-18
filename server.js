@@ -33,7 +33,7 @@ app.get("/js", (req, res)=>{
     res.sendFile(path.join(__dirname, "../public/index.js"))
 })
 app.get("/styles", (req, res)=>{
-    rollbar.info("Served JS");
+    rollbar.info("Served Styles");
     res.sendFile(path.join(__dirname, "../public/index.css"))
 })
 
