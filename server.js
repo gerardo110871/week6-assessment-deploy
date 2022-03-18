@@ -19,7 +19,7 @@ app.get("/", function(req, res){
 
 app.get("/js", (req, res)=>{
     rollbar.info("Served JS");
-    res.sendFile(path.join(__dirname, "../public/main.js"))
+    res.sendFile(path.join(__dirname, "../public/index.js"))
 })
 
 app.get('/api/robots', (req, res) => {
