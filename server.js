@@ -8,7 +8,6 @@ const {shuffleArray} = require('./utils')
 app.use(express.json())
 
 // include and initialize the rollbar library with your access token
-var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
   accessToken: '850396dc081947c9a67cf715e96effcd',
   captureUncaught: true,
