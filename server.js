@@ -8,6 +8,17 @@ const {shuffleArray} = require('./utils')
 app.use(express.json())
 app.use(cors())
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'b106d49cf99b4091adcb7aac1fd3e606',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 // app.use("/", express.static(path.join(__dirname, "../public")))
 app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
 // app.use("/js", express.static(path.join(__dirname, '../public/index.js')))
