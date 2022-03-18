@@ -17,4 +17,13 @@ test('Title shows up when page loads', async () => {
     const title = await driver.findElement(By.id('title'))
     const displayed = await title.isDisplayed()
     expect(displayed).toBe(true)
+    await driver.sleep(3000)
 })
+
+test('clicking on draw shows the bot choices', async () => {
+    const title = await driver.findElement(By.id('draw'))
+    const displayed = await title.isDisplayed()
+    expect(displayed).toBe(true)
+    driver.sleep(3000)
+})
+
