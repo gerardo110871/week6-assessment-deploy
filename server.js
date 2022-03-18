@@ -19,9 +19,9 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
-// app.use("/", express.static(path.join(__dirname, "../public")))
+app.use("/", express.static(path.join(__dirname, "../public")))
 app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
-// app.use("/js", express.static(path.join(__dirname, '../public/index.js')))
+// app.use("/js", express.static(path.join(__dirname, '../public/index.html')))
 
 app.get("/", function(req, res){
     rollbar.info("served HTML");
