@@ -12,7 +12,7 @@ app.use(cors())
 app.use("/styles",express.static(path.join(__dirname, '../public/index.css')))
 // app.use("/js", express.static(path.join(__dirname, '../public/index.js')))
 
-app.get("/api", function(req, res){
+app.get("/", function(req, res){
     rollbar.info("served HTML");
     res.sendFile(path.join(__dirname, "../public/index.html"))
 })
